@@ -15,26 +15,28 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reset_password);
 
         findViewById(R.id.btnResetPassword).setOnClickListener(view -> {
-            String email = ((EditText) findViewById(R.id.etEmail)).getText().toString();
-            String newPassword = ((EditText) findViewById(R.id.etNewPassword)).getText().toString();
+            String email = ((EditText) findViewById(R.id.etEmail)).getText().toString().trim();
+            String newPassword = ((EditText) findViewById(R.id.etNewPassword)).getText().toString().trim();
+
+            // Validate inputs
+            if (email.isEmpty() || newPassword.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             new Thread(() -> {
                 AppDatabase db = AppDatabase.getInstance(this);
                 User user = db.userDao().findByEmail(email);
 
-                runOnUiThread(() -> {
-                    if (user != null) {
-                        new Thread(() -> {
-                            db.userDao().resetPassword(email, newPassword);
-                            runOnUiThread(() -> {
-                                Toast.makeText(this, "Password reset successfully!", Toast.LENGTH_SHORT).show();
-                                finish();
-                            });
-                        }).start();
-                    } else {
-                        Toast.makeText(this, "Email not found!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                if (user != null) {
+                    db.userDao().resetPassword(email, newPassword);
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Password reset successfully!", Toast.LENGTH_SHORT).show();
+                        finish(); // Close the activity
+                    });
+                } else {
+                    runOnUiThread(() -> Toast.makeText(this, "Email not found!", Toast.LENGTH_SHORT).show());
+                }
             }).start();
         });
     }
