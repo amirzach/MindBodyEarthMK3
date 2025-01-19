@@ -20,19 +20,22 @@ public class RegisterActivity extends AppCompatActivity {
             String password = ((EditText) findViewById(R.id.etPassword)).getText().toString();
 
             if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                AppDatabase db = AppDatabase.getInstance(this);
-                User user = new User();
-                user.setUsername(username);
-                user.setEmail(email);
-                user.setPassword(password);
-                db.userDao().insertUser(user);
+                new Thread(() -> {
+                    AppDatabase db = AppDatabase.getInstance(this);
+                    User user = new User();
+                    user.setUsername(username);
+                    user.setEmail(email);
+                    user.setPassword(password);
+                    db.userDao().insertUser(user);
 
-                Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                finish();
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    });
+                }).start();
             } else {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             }
         });
     }
 }
-

@@ -12,15 +12,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MindBodyEarthMK3"
         tools:targetApi="31">
+
+        <!-- Main Activity -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="true" />
+
+        <!-- Register Activity -->
+        <activity
+            android:name=".ui.RegisterActivity"
+            android:exported="true" />
+
+        <!-- Reset Password Activity -->
+        <activity
+            android:name=".ui.ResetPasswordActivity"
+            android:exported="true" />
+
+        <!-- Home Page Activity -->
+        <activity android:name=".ui.HomePageActivity" />
     </application>
 
 </manifest>

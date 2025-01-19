@@ -18,17 +18,24 @@ public class ResetPasswordActivity extends AppCompatActivity {
             String email = ((EditText) findViewById(R.id.etEmail)).getText().toString();
             String newPassword = ((EditText) findViewById(R.id.etNewPassword)).getText().toString();
 
-            AppDatabase db = AppDatabase.getInstance(this);
-            User user = db.userDao().findByEmail(email);
+            new Thread(() -> {
+                AppDatabase db = AppDatabase.getInstance(this);
+                User user = db.userDao().findByEmail(email);
 
-            if (user != null) {
-                db.userDao().resetPassword(email, newPassword);
-                Toast.makeText(this, "Password reset successfully!", Toast.LENGTH_SHORT).show();
-                finish();
-            } else {
-                Toast.makeText(this, "Email not found!", Toast.LENGTH_SHORT).show();
-            }
+                runOnUiThread(() -> {
+                    if (user != null) {
+                        new Thread(() -> {
+                            db.userDao().resetPassword(email, newPassword);
+                            runOnUiThread(() -> {
+                                Toast.makeText(this, "Password reset successfully!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            });
+                        }).start();
+                    } else {
+                        Toast.makeText(this, "Email not found!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }).start();
         });
     }
 }
-
