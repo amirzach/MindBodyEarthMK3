@@ -18,7 +18,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="20dp" />
 
-        <!-- Login Button -->
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
@@ -26,7 +25,6 @@
             android:text="Login"
             android:layout_marginBottom="10dp" />
 
-        <!-- Register Button -->
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
