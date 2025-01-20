@@ -1,0 +1,65 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Day"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/etJournalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Journal Title"
+            android:layout_marginBottom="10dp" />
+
+        <EditText
+            android:id="@+id/etJournalContent"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Write your journal entry here..."
+            android:gravity="top"
+            android:background="@android:drawable/editbox_background_normal"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnSaveJournal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Journal Entry"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnViewCurrentJournal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Current Journal"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnViewPastJournal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Past Journal" />
+
+    </LinearLayout>
+</ScrollView>

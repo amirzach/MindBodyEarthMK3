@@ -39,7 +39,13 @@
             android:exported="true" />
 
         <!-- Home Page Activity -->
-        <activity android:name=".ui.HomePageActivity" />
-    </application>
+        <activity
+            android:name=".ui.HomePageActivity"
+            android:exported="true" />
 
+        <!-- Journal Activity -->
+        <activity
+            android:name=".ui.JournalActivity"
+            android:exported="true" />
+    </application>
 </manifest>
