@@ -47,5 +47,10 @@
         <activity
             android:name=".ui.JournalActivity"
             android:exported="true" />
+
+        <!-- Meal Plan Activity -->
+        <activity
+            android:name=".ui.MealPlanActivity"
+            android:exported="true" />
     </application>
 </manifest>
