@@ -1,7 +1,9 @@
 package com.example.mindbodyearthmk3.ui;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,7 +80,7 @@ public class JournalActivity extends AppCompatActivity {
                     List<JournalEntry> entries = db.journalEntryDao().findByDate(currentDate);
                     runOnUiThread(() -> {
                         if (entries != null && !entries.isEmpty()) {
-                            Toast.makeText(this, "Found " + entries.size() + " entries for today.", Toast.LENGTH_SHORT).show();
+                            showJournalEntriesDialog("Today's Journal Entries", entries);
                         } else {
                             Toast.makeText(this, "No entries for today.", Toast.LENGTH_SHORT).show();
                         }
@@ -97,7 +99,7 @@ public class JournalActivity extends AppCompatActivity {
                     List<JournalEntry> pastEntries = db.journalEntryDao().findPastEntries(currentDate);
                     runOnUiThread(() -> {
                         if (pastEntries != null && !pastEntries.isEmpty()) {
-                            Toast.makeText(this, "Found " + pastEntries.size() + " past entries.", Toast.LENGTH_SHORT).show();
+                            showJournalEntriesDialog("Past Journal Entries", pastEntries);
                         } else {
                             Toast.makeText(this, "No past entries found.", Toast.LENGTH_SHORT).show();
                         }
@@ -110,9 +112,27 @@ public class JournalActivity extends AppCompatActivity {
         });
     }
 
+    private void showJournalEntriesDialog(String title, List<JournalEntry> entries) {
+        // Create a dialog to show journal entries
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title);
+
+        // Create a string representation of the entries
+        StringBuilder sb = new StringBuilder();
+        for (JournalEntry entry : entries) {
+            sb.append("Title: ").append(entry.getTitle()).append("\n")
+                    .append("Content: ").append(entry.getContent()).append("\n\n");
+        }
+
+        builder.setMessage(sb.toString().trim());
+        builder.setPositiveButton("Close", (dialog, which) -> dialog.dismiss());
+        builder.show();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         executorService.shutdown(); // Ensure the executor service is properly shut down
     }
 }
+
