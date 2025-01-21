@@ -6,8 +6,16 @@ import androidx.room.RoomDatabase;
 import android.content.Context;
 
 // Specify the database entities and version
-@Database(entities = {User.class, Days.class, JournalEntry.class, MealPlan.class, Meal.class, Food.class},
-        version = 4, // Increment version number
+@Database(entities = {
+        User.class,
+        Days.class,
+        JournalEntry.class,
+        MealPlan.class,
+        Meal.class,
+        Food.class,
+        HealthData.class // Include HealthData entity
+},
+        version = 5, // Increment version number for the new entity
         exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -16,9 +24,10 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract DaysDao daysDao();
     public abstract JournalEntryDao journalEntryDao();
-    public abstract MealPlanDao mealPlanDao(); // New DAO
-    public abstract MealDao mealDao();         // New DAO
-    public abstract FoodDao foodDao();         // New DAO
+    public abstract MealPlanDao mealPlanDao();
+    public abstract MealDao mealDao();
+    public abstract FoodDao foodDao();
+    public abstract HealthDataDao healthDataDao(); // New DAO
 
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {

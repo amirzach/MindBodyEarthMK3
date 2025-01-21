@@ -48,9 +48,14 @@
             android:name=".ui.JournalActivity"
             android:exported="true" />
 
-        <!-- Meal Plan Activity -->
+        <!-- Meal Activity -->
         <activity
             android:name=".ui.MealPlanActivity"
+            android:exported="true" />
+
+        <!-- Health Tracking Activity -->
+        <activity
+            android:name=".ui.HealthTrackingActivity"
             android:exported="true" />
     </application>
 </manifest>
