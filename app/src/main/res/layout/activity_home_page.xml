@@ -1,70 +1,201 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@drawable/app_background"
+    android:orientation="vertical"
+    android:paddingTop="100dp"
+    android:visibility="visible"
+    tools:context=".ui.HomePageActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_journal"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:contentDescription="Journal icon"
+            android:src="@drawable/ic_journal" />
 
         <TextView
-            android:id="@+id/tvHomeWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to the Homepage!"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="30dp" />
-
-        <Button
-            android:id="@+id/btnJournal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
             android:text="Journal"
-            android:layout_marginBottom="10dp" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnMealPlan"
-            android:layout_width="match_parent"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_meal_plan"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bubble_tips"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="Meal Plan icon"
+            android:src="@drawable/ic_meal_plan" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
             android:text="Meal Plan"
-            android:layout_marginBottom="10dp" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnWorkoutPlan"
-            android:layout_width="match_parent"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_workout_plan"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bubble_carbon_footprint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bubble_journal">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="Workout Plan icon"
+            android:src="@drawable/ic_workout_plan" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
             android:text="Workout Plan"
-            android:layout_marginBottom="10dp" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnMeditationGuides"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Meditation Guides"
-            android:layout_marginBottom="10dp" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_tips"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="32dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bubble_health_tracking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/bubble_workout_plan">
 
-        <Button
-            android:id="@+id/btnCarbonFootprint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Carbon Footprint"
-            android:layout_marginBottom="10dp" />
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="Tips icon"
+            android:src="@drawable/ic_tips" />
 
-        <Button
-            android:id="@+id/btnHealthTrack"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Health Tracking Status"
-            android:layout_marginBottom="10dp" />
+            android:layout_gravity="center_horizontal"
+            android:text="Tips"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_carbon_footprint"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="50dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="carbon_footprint_icon"
+            android:src="@drawable/ic_carbon_footprint" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_marginTop="20dp" />
-    </LinearLayout>
-</ScrollView>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Carbon Footprint \nTracker"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_health_tracking"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_health_tracker"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="Health Tracking icon"
+            android:src="@drawable/ic_health_tracking" />
+
+        <TextView
+            android:id="@+id/tvHealthTracker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Health Tracker"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

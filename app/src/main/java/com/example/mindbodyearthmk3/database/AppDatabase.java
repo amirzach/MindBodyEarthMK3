@@ -13,7 +13,7 @@ import android.content.Context;
         MealPlan.class,
         Meal.class,
         Food.class,
-        HealthData.class, // Include HealthData entity
+        HealthData.class,
         WorkoutPlan.class,
         Workout.class
 },
@@ -30,8 +30,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract MealDao mealDao();
     public abstract FoodDao foodDao();
     public abstract HealthDataDao healthDataDao(); // New DAO
+    public abstract WorkoutDao workoutDao();
     public abstract WorkoutPlanDao workoutPlanDAO();
-    public abstract WorkoutDao workoutDAO();
 
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {

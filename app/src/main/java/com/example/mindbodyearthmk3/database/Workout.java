@@ -15,7 +15,7 @@ public class Workout {
     private int sets;
     private int reps;
 
-    private boolean completionStatus;
+//    private boolean completionStatus;
 
     public String getWorkoutName() {
         return workoutName;
@@ -57,13 +57,13 @@ public class Workout {
         this.reps = reps;
     }
 
-    public boolean isCompletionStatus() {
-        return completionStatus;
-    }
-
-    public void setCompletionStatus(boolean completionStatus) {
-        this.completionStatus = completionStatus;
-    }
+//    public boolean isCompletionStatus() {
+//        return completionStatus;
+//    }
+//
+//    public void setCompletionStatus(boolean completionStatus) {
+//        this.completionStatus = completionStatus;
+//    }
 
 
 }

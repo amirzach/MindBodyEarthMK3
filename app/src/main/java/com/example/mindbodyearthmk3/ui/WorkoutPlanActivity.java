@@ -26,7 +26,7 @@ public class WorkoutPlanActivity extends AppCompatActivity {
     private EditText workoutReps;
     private RecyclerView recyclerView;
     private WorkoutListAdapter adapter;
-    private WorkoutDao workoutDAO;
+    private WorkoutDao workoutDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class WorkoutPlanActivity extends AppCompatActivity {
         // Initialize Database
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "workout-database").build();
-        workoutDAO = db.workoutDAO();
+        workoutDao = db.workoutDao();
 
         // Set up the adapter with empty list initially
         adapter = new WorkoutListAdapter(new ArrayList<>());
@@ -67,7 +67,7 @@ public class WorkoutPlanActivity extends AppCompatActivity {
         // Since Room doesn't allow database operations on the main thread,
         // we need to use a background thread
         new Thread(() -> {
-            List<Workout> workouts = workoutDAO.getAllWorkouts();
+            List<Workout> workouts = workoutDao.getAllWorkouts();
             runOnUiThread(() -> {
                 adapter = new WorkoutListAdapter(new ArrayList<>(workouts));
                 recyclerView.setAdapter(adapter);
@@ -88,7 +88,7 @@ public class WorkoutPlanActivity extends AppCompatActivity {
         workout.setReps(reps);
 
         new Thread(() -> {
-            workoutDAO.insertWorkout(workout);
+            workoutDao.insertWorkout(workout);
             runOnUiThread(() -> {
                 clearInputFields();
                 loadWorkouts(); // Reload the list after adding
@@ -117,7 +117,7 @@ public class WorkoutPlanActivity extends AppCompatActivity {
 
                 // Delete from database in background thread
                 new Thread(() -> {
-                    workoutDAO.deleteWorkout(workoutToDelete);
+                    workoutDao.deleteWorkout(workoutToDelete);
                     runOnUiThread(() -> {
                         adapter.removeItem(position);
                     });

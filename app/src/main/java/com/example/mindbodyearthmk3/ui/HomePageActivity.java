@@ -3,56 +3,37 @@ package com.example.mindbodyearthmk3.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mindbodyearthmk3.R;
 
 public class HomePageActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
 
-        // Logout button
-        findViewById(R.id.btnLogout).setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear back stack
+        Intent intent = new Intent(this, WorkoutPlanActivity.class);
+
+        findViewById(R.id.bubble_workout_plan).setOnClickListener(v -> {
             startActivity(intent);
         });
 
-        // Journal button
-        findViewById(R.id.btnJournal).setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, JournalActivity.class);
-            startActivity(intent);
-        });
+//        onBubbleClick(WorkoutPlanActivity.class, R.id.bubble_workout_plan);
+//        onBubbleClick(JournalActivity.class, R.id.bubble_journal);
+//        onBubbleClick(MealPlanActivity.class, R.id.bubble_meal_plan);
+//        onBubbleClick(TipsActivity.class, R.id.bubble_tips);
+//        onBubbleClick(HealthTrackingActivity.class, R.id.bubble_health_tracking);
+//        onBubbleClick(CarbonFootprintActivity.class, R.id.bubble_carbon_footprint);
 
-        // Meal Plan button
-        findViewById(R.id.btnMealPlan).setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, MealPlanActivity.class);
-            startActivity(intent);
-        });
+    }
 
-        // Workout Plan button
-        findViewById(R.id.btnWorkoutPlan).setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, WorkoutPlanActivity.class);
-            startActivity(intent);
-        });
-
-        // Meditation Guides button
-        findViewById(R.id.btnMeditationGuides).setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, MeditationGuidesActivity.class);
-            startActivity(intent);
-        });
-
-        // Carbon Footprint button
-        findViewById(R.id.btnCarbonFootprint).setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, CarbonFootprintActivity.class);
-            startActivity(intent);
-        });
-
-        // Health Tracking Status button
-        findViewById(R.id.btnHealthTrack).setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, HealthTrackingActivity.class);
+    private void onBubbleClick(Class<?> activityClass, int bubbleId) {
+        Intent intent = new Intent(this, activityClass);
+        findViewById(bubbleId).setOnClickListener(v -> {
             startActivity(intent);
         });
     }
