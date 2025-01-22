@@ -82,15 +82,18 @@ public class HealthTrackingActivity extends AppCompatActivity {
             try {
                 List<HealthData> healthDataList = db.healthDataDao().getAll();
                 List<Integer> bloodPressureData = new ArrayList<>();
+                List<Integer> heartRateData = new ArrayList<>();
+                List<Float> weightData = new ArrayList<>();
 
-                // Extract blood pressure values for plotting
                 for (HealthData data : healthDataList) {
                     bloodPressureData.add(data.getBloodPressure());
+                    heartRateData.add(data.getHeartRate());
+                    weightData.add(data.getWeight());
                 }
 
                 runOnUiThread(() -> {
-                    customChartView.setDataPoints(bloodPressureData);
-                    customChartView.invalidate(); // Redraw the chart
+                    customChartView.setDataPoints(bloodPressureData, heartRateData, weightData);
+                    customChartView.invalidate();
                 });
             } catch (Exception e) {
                 e.printStackTrace();
