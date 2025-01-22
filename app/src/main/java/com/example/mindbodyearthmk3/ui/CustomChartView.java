@@ -15,6 +15,7 @@ public class CustomChartView extends View {
     private Paint weightPaint;
     private Paint pointPaint;
     private Paint textPaint;
+    private Paint legendPaint;
 
     private List<Integer> bloodPressureData;
     private List<Integer> heartRateData;
@@ -46,6 +47,9 @@ public class CustomChartView extends View {
         textPaint = new Paint();
         textPaint.setColor(Color.BLACK);
         textPaint.setTextSize(30f);
+
+        legendPaint = new Paint();
+        legendPaint.setStyle(Paint.Style.FILL);
     }
 
     public void setDataPoints(List<Integer> bloodPressure, List<Integer> heartRate, List<Float> weight) {
@@ -80,6 +84,9 @@ public class CustomChartView extends View {
         drawLineChart(canvas, bloodPressureData, stepX, stepY, height, padding, bloodPressurePaint);
         drawLineChart(canvas, heartRateData, stepX, stepY, height, padding, heartRatePaint);
         drawLineChart(canvas, weightData, stepX, stepY, height, padding, weightPaint);
+
+        // Draw legend
+        drawLegend(canvas, width, height, padding);
     }
 
     private void drawLineChart(Canvas canvas, List<?> data, float stepX, float stepY,
@@ -101,6 +108,29 @@ public class CustomChartView extends View {
         float lastX = padding + (data.size() - 1) * stepX;
         float lastY = height - padding - (getValue(data.get(data.size() - 1)) * stepY);
         canvas.drawCircle(lastX, lastY, 8f, pointPaint);
+    }
+
+    private void drawLegend(Canvas canvas, float width, float height, float padding) {
+        float legendPadding = 20f;
+        float legendX = padding;
+        float legendY = height - padding + 30f;
+
+        // Blood Pressure Legend
+        legendPaint.setColor(Color.RED);
+        canvas.drawRect(legendX, legendY, legendX + 30f, legendY + 30f, legendPaint);
+        canvas.drawText("Blood Pressure", legendX + 40f, legendY + 25f, textPaint);
+
+        // Heart Rate Legend
+        legendX += 200f;
+        legendPaint.setColor(Color.BLUE);
+        canvas.drawRect(legendX, legendY, legendX + 30f, legendY + 30f, legendPaint);
+        canvas.drawText("Heart Rate", legendX + 40f, legendY + 25f, textPaint);
+
+        // Weight Legend
+        legendX += 200f;
+        legendPaint.setColor(Color.GREEN);
+        canvas.drawRect(legendX, legendY, legendX + 30f, legendY + 30f, legendPaint);
+        canvas.drawText("Weight", legendX + 40f, legendY + 25f, textPaint);
     }
 
     private float getMaxValue(List<?> data) {
