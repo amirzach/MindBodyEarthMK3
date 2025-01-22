@@ -16,18 +16,20 @@ public class HomePageActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
 
-        Intent intent = new Intent(this, WorkoutPlanActivity.class);
+//        Intent intent = new Intent(this, WorkoutPlanActivity.class);
+//
+//        findViewById(R.id.bubble_workout_plan).setOnClickListener(v -> {
+//            startActivity(intent);
+//        });
 
-        findViewById(R.id.bubble_workout_plan).setOnClickListener(v -> {
-            startActivity(intent);
-        });
+        //Logout button clicked
 
-//        onBubbleClick(WorkoutPlanActivity.class, R.id.bubble_workout_plan);
-//        onBubbleClick(JournalActivity.class, R.id.bubble_journal);
-//        onBubbleClick(MealPlanActivity.class, R.id.bubble_meal_plan);
-//        onBubbleClick(TipsActivity.class, R.id.bubble_tips);
-//        onBubbleClick(HealthTrackingActivity.class, R.id.bubble_health_tracking);
-//        onBubbleClick(CarbonFootprintActivity.class, R.id.bubble_carbon_footprint);
+        onBubbleClick(WorkoutPlanActivity.class, R.id.bubble_workout_plan);
+        onBubbleClick(JournalActivity.class, R.id.bubble_journal);
+        onBubbleClick(MealPlanActivity.class, R.id.bubble_meal_plan);
+        onBubbleClick(TipsActivity.class, R.id.bubble_tips);
+        onBubbleClick(HealthTrackingActivity.class, R.id.bubble_health_tracking);
+        onBubbleClick(CarbonFootprintActivity.class, R.id.bubble_carbon_footprint);
 
     }
 

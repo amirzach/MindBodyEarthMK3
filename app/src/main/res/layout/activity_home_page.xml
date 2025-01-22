@@ -8,7 +8,6 @@
     android:background="@drawable/app_background"
     android:orientation="vertical"
     android:paddingTop="100dp"
-    android:visibility="visible"
     tools:context=".ui.HomePageActivity">
 
     <com.google.android.material.card.MaterialCardView
@@ -16,11 +15,13 @@
         android:layout_width="180dp"
         android:layout_height="200dp"
         android:layout_margin="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:visibility="visible"
         app:cardBackgroundColor="@color/teal_200"
         app:cardCornerRadius="24dp"
         app:cardElevation="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/bubble_meal_plan"
+        app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -38,51 +39,21 @@
             android:layout_marginTop="8dp"
             android:text="Journal"
             android:textColor="@color/white"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
+            android:textSize="20sp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bubble_meal_plan"
-        android:layout_width="180dp"
-        android:layout_height="200dp"
-        android:layout_margin="8dp"
-        android:layout_marginEnd="8dp"
-        android:visibility="visible"
-        app:cardBackgroundColor="@color/teal_200"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bubble_tips"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_gravity="center"
-            android:contentDescription="Meal Plan icon"
-            android:src="@drawable/ic_meal_plan" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="Meal Plan"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bubble_workout_plan"
         android:layout_width="180dp"
         android:layout_height="200dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:visibility="visible"
         app:cardBackgroundColor="@color/teal_200"
         app:cardCornerRadius="24dp"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bubble_carbon_footprint"
+        app:layout_constraintEnd_toStartOf="@+id/bubble_tips"
+        app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bubble_journal">
 
@@ -100,24 +71,118 @@
             android:layout_marginTop="8dp"
             android:text="Workout Plan"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_carbon_footprint"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bubble_workout_plan"
+        app:layout_constraintVertical_bias="0.115">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="carbon_footprint_icon"
+            android:src="@drawable/ic_carbon_footprint" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Carbon Footprint \nTracker"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_health_tracking"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="72dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bubble_tips">
+
+        <ImageView
+            android:id="@+id/iv_health_tracker"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="Health Tracking icon"
+            android:src="@drawable/ic_health_tracking" />
+
+        <TextView
+            android:id="@+id/tvHealthTracker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Health Tracker"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bubble_meal_plan"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:contentDescription="Meal Plan icon"
+            android:src="@drawable/ic_meal_plan" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Meal Plan"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bubble_tips"
         android:layout_width="180dp"
         android:layout_height="200dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
         android:visibility="visible"
         app:cardBackgroundColor="@color/teal_200"
         app:cardCornerRadius="24dp"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bubble_health_tracking"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/bubble_workout_plan">
+        app:layout_constraintTop_toBottomOf="@+id/bubble_meal_plan">
 
         <ImageView
             android:layout_width="72dp"
@@ -135,67 +200,19 @@
             android:textSize="16sp" />
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bubble_carbon_footprint"
-        android:layout_width="180dp"
-        android:layout_height="200dp"
-        android:layout_margin="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="50dp"
-        android:visibility="visible"
-        app:cardBackgroundColor="@color/teal_200"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/tanAccent"
+        android:text="Logout"
+        android:textColor="@color/teal_200"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_gravity="center"
-            android:contentDescription="carbon_footprint_icon"
-            android:src="@drawable/ic_carbon_footprint" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="Carbon Footprint \nTracker"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bubble_health_tracking"
-        android:layout_width="180dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="visible"
-        app:cardBackgroundColor="@color/teal_200"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/iv_health_tracker"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_gravity="center"
-            android:contentDescription="Health Tracking icon"
-            android:src="@drawable/ic_health_tracking" />
-
-        <TextView
-            android:id="@+id/tvHealthTracker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Health Tracker"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
