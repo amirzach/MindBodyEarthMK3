@@ -9,7 +9,7 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface WorkoutDAO {
+public interface WorkoutDao {
     @Insert
     void insertWorkout(Workout workout);
 

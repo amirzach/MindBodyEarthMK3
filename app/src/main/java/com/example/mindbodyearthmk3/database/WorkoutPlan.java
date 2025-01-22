@@ -10,7 +10,7 @@ public class WorkoutPlan {
     @ColumnInfo(name = "workout_plan_id")
     private Long id;
 
-    private String day;
+//    private String day;
 
     private static final String[] DAYS_OF_WEEK = {
             "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
