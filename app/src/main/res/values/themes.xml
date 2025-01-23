@@ -2,7 +2,23 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MindBodyEarthMK3" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->'
+        <item name="colorPrimary">@color/drab_dark_brown</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/reseda_green</item>
+        <item name="colorOnSecondary">@color/coyote</item>
+
+        <!-- Tertiary Colors -->
+        <item name="colorTertiary">@color/russet</item>
+        <item name="colorOnTertiary">@color/khaki</item>
+
+        <!-- Additional Colors (Optional) -->
+        <item name="backgroundColor">@color/drab_dark_brown</item>
+        <item name="colorSurface">@color/khaki</item>
+        <item name="colorOnBackground">@color/reseda_green</item>
+        <item name="colorOnSurface">@color/russet</item>
     </style>
 
     <style name="Theme.MindBodyEarthMK3" parent="Base.Theme.MindBodyEarthMK3" />
