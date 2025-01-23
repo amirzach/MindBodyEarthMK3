@@ -8,16 +8,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mindbodyearthmk3.R;
 import com.example.mindbodyearthmk3.database.AppDatabase;
 import com.example.mindbodyearthmk3.database.User;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
+    TextInputLayout usernameTextInputLayout, passwordTextInputLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        usernameTextInputLayout = findViewById(R.id.usernameTextInputLayout);
+        passwordTextInputLayout = findViewById(R.id.passwordTextInputLayout);
+
         findViewById(R.id.btnLogin).setOnClickListener(view -> {
-            String username = ((EditText) findViewById(R.id.etUsername)).getText().toString();
-            String password = ((EditText) findViewById(R.id.etPassword)).getText().toString();
+            String username = ((EditText) usernameTextInputLayout.getEditText()).getText().toString();
+            String password = ((EditText) passwordTextInputLayout.getEditText()).getText().toString();
 
             new Thread(() -> {
                 AppDatabase db = AppDatabase.getInstance(this);
@@ -36,6 +42,10 @@ public class LoginActivity extends AppCompatActivity {
 
         findViewById(R.id.tvResetPassword).setOnClickListener(view ->
                 startActivity(new Intent(this, ResetPasswordActivity.class))
+        );
+
+        findViewById(R.id.btnRegister).setOnClickListener(view ->
+                startActivity(new Intent(this, RegisterActivity.class))
         );
     }
 }
