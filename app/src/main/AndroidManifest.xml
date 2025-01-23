@@ -52,5 +52,9 @@
         <activity
             android:name=".ui.HealthTrackingActivity"
             android:exported="true" />
+
+        <!-- Workout Plan Activity -->
+        <activity android:name=".ui.WorkoutPlanActivity"
+            android:exported="true" />
     </application>
 </manifest>

@@ -17,7 +17,7 @@ import android.content.Context;
         WorkoutPlan.class,
         Workout.class
 },
-        version = 5, // Increment version number for the new entity
+        version = 7, // Increment version number for the new entity
         exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 

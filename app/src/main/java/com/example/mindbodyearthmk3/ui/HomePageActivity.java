@@ -23,7 +23,13 @@ public class HomePageActivity extends AppCompatActivity {
 //        });
 
         //Logout button clicked
+        findViewById(R.id.btnLogout).setOnClickListener(view -> {
+            Intent intent = new Intent(HomePageActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear back stack
+            startActivity(intent);
+        });
 
+        //Bubbles clicked
         onBubbleClick(WorkoutPlanActivity.class, R.id.bubble_workout_plan);
         onBubbleClick(JournalActivity.class, R.id.bubble_journal);
         onBubbleClick(MealPlanActivity.class, R.id.bubble_meal_plan);
@@ -34,8 +40,8 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void onBubbleClick(Class<?> activityClass, int bubbleId) {
-        Intent intent = new Intent(this, activityClass);
-        findViewById(bubbleId).setOnClickListener(v -> {
+        findViewById(bubbleId).setOnClickListener(view -> {
+            Intent intent = new Intent(HomePageActivity.this, activityClass);
             startActivity(intent);
         });
     }

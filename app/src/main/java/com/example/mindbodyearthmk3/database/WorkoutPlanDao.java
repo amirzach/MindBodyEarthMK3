@@ -30,5 +30,9 @@ public interface WorkoutPlanDao {
     @Transaction
     @Query("SELECT * FROM Workout WHERE workout_id = :id LIMIT 1")
     Workout getWorkoutByWorkoutPlanId(int id);
+
+//    @Transaction
+//    @Query("SELECT * FROM WorkoutPlan WHERE dayId IN (SELECT dayId FROM days WHERE date < :currentDate)")
+//    List<WorkoutPlanWithWorkouts> findPastWorkoutPlans(String currentDate);
 }
 
