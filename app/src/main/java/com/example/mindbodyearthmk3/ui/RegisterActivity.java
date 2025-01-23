@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mindbodyearthmk3.R;
 import com.example.mindbodyearthmk3.database.AppDatabase;
 import com.example.mindbodyearthmk3.database.User;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class RegisterActivity extends AppCompatActivity {
     @Override
@@ -15,9 +16,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         findViewById(R.id.btnRegister).setOnClickListener(view -> {
-            String username = ((EditText) findViewById(R.id.etUsername)).getText().toString();
-            String email = ((EditText) findViewById(R.id.etEmail)).getText().toString();
-            String password = ((EditText) findViewById(R.id.etPassword)).getText().toString();
+            String username = ((TextInputLayout) findViewById(R.id.registerUsernameTextInputLayout)).getEditText().getText().toString();
+            String email = ((TextInputLayout) findViewById(R.id.registerEmailTextInputLayout)).getEditText().getText().toString();
+            String password = ((TextInputLayout) findViewById(R.id.registerPasswordTextInputLayout)).getEditText().getText().toString();
 
             if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
                 new Thread(() -> {
@@ -27,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
                     user.setEmail(email);
                     user.setPassword(password);
                     db.userDao().insertUser(user);
+
+                    // Checks if the email is taken
 
                     runOnUiThread(() -> {
                         Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show();
