@@ -5,4 +5,9 @@
     <color name="blue">#0000FF</color>
     <color name="green">#008000</color>
     <color name="red">#ff0000</color>
+    <color name="drab_dark_brown">#3e4529</color>
+    <color name="reseda_green">#677246</color>
+    <color name="russet">#7e4e2b</color>
+    <color name="coyote">#866746</color>
+    <color name="khaki">#ac9d7b</color>
 </resources>
