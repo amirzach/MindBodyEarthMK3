@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mindbodyearthmk3.R;
 import com.example.mindbodyearthmk3.database.AppDatabase;
 import com.example.mindbodyearthmk3.database.User;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.concurrent.ExecutorService;
 
 public class ResetPasswordActivity extends AppCompatActivity {
     @Override
@@ -15,8 +18,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reset_password);
 
         findViewById(R.id.btnResetPassword).setOnClickListener(view -> {
-            String email = ((EditText) findViewById(R.id.emailTextInputLayout)).getText().toString();
-            String newPassword = ((EditText) findViewById(R.id.newPasswordTextInputLayout)).getText().toString();
+            String email = ((TextInputLayout) findViewById(R.id.emailTextInputLayout)).getEditText().getText().toString();
+            String newPassword = ((TextInputLayout) findViewById(R.id.newPasswordTextInputLayout)).getEditText().getText().toString();
 
             // Validate inputs
             if (email.isEmpty() || newPassword.isEmpty()) {
