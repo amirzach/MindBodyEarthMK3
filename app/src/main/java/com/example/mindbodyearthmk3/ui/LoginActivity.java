@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.mindbodyearthmk3.R;
 import com.example.mindbodyearthmk3.database.AppDatabase;
@@ -12,6 +14,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
     TextInputLayout usernameTextInputLayout, passwordTextInputLayout;
+    public static final int REGISTER_REQUEST_CODE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,16 @@ public class LoginActivity extends AppCompatActivity {
         );
 
         findViewById(R.id.btnRegister).setOnClickListener(view ->
-                startActivity(new Intent(this, RegisterActivity.class))
+                startActivityForResult(new Intent(this, RegisterActivity.class), REGISTER_REQUEST_CODE)
         );
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REGISTER_REQUEST_CODE && resultCode == RESULT_OK) {
+            startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+        }
     }
 }

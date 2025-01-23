@@ -1,5 +1,6 @@
 package com.example.mindbodyearthmk3.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,16 +24,37 @@ public class RegisterActivity extends AppCompatActivity {
             if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
                 new Thread(() -> {
                     AppDatabase db = AppDatabase.getInstance(this);
+
+                    // Checks if the email is taken
+                    if(db.userDao().findByEmail(email) != null) {
+                        runOnUiThread(() -> {
+                            Toast.makeText(this, "Email is already taken", Toast.LENGTH_SHORT).show();
+                        });
+                        return;
+                    }
+                    // Checks if the username is taken
+                    if(db.userDao().findByUsername(username) != null) {
+                        runOnUiThread(() -> {
+                            Toast.makeText(this, "Username is already taken", Toast.LENGTH_SHORT).show();
+                        });
+                        return;
+                    }
+
                     User user = new User();
                     user.setUsername(username);
                     user.setEmail(email);
                     user.setPassword(password);
                     db.userDao().insertUser(user);
 
-                    // Checks if the email is taken
-
                     runOnUiThread(() -> {
                         Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("username", username);
+                        resultIntent.putExtra("password", password);
+                        resultIntent.putExtra("email", email);
+
+                        setResult(RESULT_OK, resultIntent);
                         finish();
                     });
                 }).start();
