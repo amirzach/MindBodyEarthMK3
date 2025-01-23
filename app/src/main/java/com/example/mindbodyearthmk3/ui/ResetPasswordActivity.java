@@ -15,8 +15,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reset_password);
 
         findViewById(R.id.btnResetPassword).setOnClickListener(view -> {
-            String email = ((EditText) findViewById(R.id.etEmail)).getText().toString().trim();
-            String newPassword = ((EditText) findViewById(R.id.etNewPassword)).getText().toString().trim();
+            String email = ((EditText) findViewById(R.id.emailTextInputLayout)).getText().toString();
+            String newPassword = ((EditText) findViewById(R.id.newPasswordTextInputLayout)).getText().toString();
 
             // Validate inputs
             if (email.isEmpty() || newPassword.isEmpty()) {
