@@ -43,7 +43,8 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/usernameTextInputLayout"
         app:layout_constraintStart_toStartOf="@+id/usernameTextInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/usernameTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/usernameTextInputLayout"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

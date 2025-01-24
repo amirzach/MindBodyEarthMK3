@@ -28,4 +28,7 @@ public interface UserDao {
     // Find a user by their email
     @Query("SELECT * FROM user_table WHERE email = :email")
     User findByEmail(String email);
+
+    @Query("SELECT * FROM user_table WHERE username = :username")
+    User findByUsername(String username);
 }
