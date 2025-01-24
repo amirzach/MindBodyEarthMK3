@@ -22,4 +22,7 @@ public interface MealPlanDao {
 
     @Query("DELETE FROM MealPlan")
     void deleteAll();
+
+    @Query("SELECT SUM(totalCalories) FROM Meal WHERE mealPlanId = :mealPlanId")
+    int getMealPlanTotalCalories(long mealPlanId);
 }

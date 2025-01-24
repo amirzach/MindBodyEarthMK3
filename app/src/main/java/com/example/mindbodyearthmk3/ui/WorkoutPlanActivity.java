@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
+
 
 public class WorkoutPlanActivity extends AppCompatActivity {
     private EditText workoutName;
@@ -36,12 +36,6 @@ public class WorkoutPlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_planning);
 
-        // Get the current day and date
-        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String currentDay = dayFormat.format(new Date());
-        String currentDate = dateFormat.format(new Date());
-
         // Initialize EditTexts
         workoutName = findViewById(R.id.etWorkoutName);
         workoutType = findViewById(R.id.etWorkoutTypes);
@@ -53,7 +47,9 @@ public class WorkoutPlanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize Database
-        AppDatabase db = AppDatabase.getInstance(this);
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "workout-database").build();
+        workoutDao = db.workoutDao();
 
         // Set up the adapter with empty list initially
         adapter = new WorkoutListAdapter(new ArrayList<>());
