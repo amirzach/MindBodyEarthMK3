@@ -10,4 +10,6 @@
     <color name="russet">#7e4e2b</color>
     <color name="coyote">#866746</color>
     <color name="khaki">#ac9d7b</color>
+    <color name="teal_200">#FF018786</color>
+    <color name="tanAccent">#E3CDB3</color>
 </resources>
