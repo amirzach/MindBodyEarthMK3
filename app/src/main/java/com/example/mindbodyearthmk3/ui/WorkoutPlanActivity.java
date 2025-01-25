@@ -47,8 +47,7 @@ public class WorkoutPlanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize Database
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "workout-database").build();
+        AppDatabase db = AppDatabase.getInstance(this);
         workoutDao = db.workoutDao();
 
         // Set up the adapter with empty list initially
