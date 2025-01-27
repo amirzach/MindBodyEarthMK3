@@ -19,46 +19,34 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Register Activity -->
+        </activity> <!-- Login Activity -->
         <activity
             android:name=".ui.RegisterActivity"
-            android:exported="true" />
-
-        <!-- Reset Password Activity -->
+            android:exported="true" /> <!-- Register Activity -->
         <activity
             android:name=".ui.ResetPasswordActivity"
-            android:exported="true" />
-
-        <!-- Home Page Activity -->
+            android:exported="true" /> <!-- Reset Password Activity -->
         <activity
             android:name=".ui.HomePageActivity"
-            android:exported="true" />
-
-        <!-- Journal Activity -->
+            android:exported="true" /> <!-- Home Page Activity -->
         <activity
             android:name=".ui.JournalActivity"
-            android:exported="true" />
-
-        <!-- Meal Activity -->
+            android:exported="true" /> <!-- Journal Activity -->
         <activity
             android:name=".ui.MealPlanActivity"
-            android:exported="true" />
-
-        <!-- Health Tracking Activity -->
+            android:exported="true" /> <!-- Meal Plan Activity -->
         <activity
             android:name=".ui.HealthTrackingActivity"
-            android:exported="true" />
-
-        <!-- Workout Plan Activity -->
-        <activity android:name=".ui.WorkoutPlanActivity"
-            android:exported="true" />
-
-        <!-- Carbon Footprint Activity -->
-        <activity android:name=".ui.CarbonFootprintActivity"
-            android:exported="true" />
+            android:exported="true" /> <!-- Health Tracking Activity -->
+        <activity
+            android:name=".ui.WorkoutPlanActivity"
+            android:exported="true" /> <!-- Workout Plan Activity -->
+        <activity
+            android:name=".ui.TipsChatActivity"
+            android:exported="false" /> <!-- Tips Chat Activity -->
     </application>
+
 </manifest>

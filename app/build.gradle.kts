@@ -39,8 +39,13 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.room.common)
     implementation(libs.room.runtime)
+    implementation(libs.google.generativeai)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     annotationProcessor(libs.room.compiler)
+    implementation (libs.room.rxjava2)
+    implementation (libs.lifecycle.viewmodel)
+    implementation (libs.androidx.lifecycle.livedata)
+    implementation(libs.google.generativeai)
 }
