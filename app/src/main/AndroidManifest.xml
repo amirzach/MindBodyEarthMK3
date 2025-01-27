@@ -56,5 +56,9 @@
         <!-- Workout Plan Activity -->
         <activity android:name=".ui.WorkoutPlanActivity"
             android:exported="true" />
+
+        <!-- Carbon Footprint Activity -->
+        <activity android:name=".ui.CarbonFootprintActivity"
+            android:exported="true" />
     </application>
 </manifest>

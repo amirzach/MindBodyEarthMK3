@@ -19,4 +19,6 @@ public interface CarbonFootprintDao {
 
     @Query("SELECT (electricityUsage * electricityEmissionFactor) + (gasUsage * gasEmissionFactor) + (transportationEmissionFactor * distanceTravelled) + ((wasteProduced - wasteRecycled) * wasteEmissionFactor) + ((SELECT SUM(totalCalories) FROM Meal WHERE mealPlanId = :mealPlanId) * mealEmissionFactor) AS totalFootprint FROM CarbonFootprint WHERE carbon_footprint_id = :carbonFootprintId")
     double getTotalFootprint(long carbonFootprintId, long mealPlanId);
+
+    CarbonFootprint getById(long carbonFootprintId);
 }

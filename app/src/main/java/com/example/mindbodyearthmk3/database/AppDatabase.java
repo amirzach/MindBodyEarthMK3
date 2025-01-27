@@ -6,6 +6,7 @@ import androidx.room.RoomDatabase;
 import android.content.Context;
 
 import com.example.mindbodyearthmk3.database.carbonfootprint.CarbonFootprint;
+import com.example.mindbodyearthmk3.database.carbonfootprint.CarbonFootprintDao;
 
 // Specify the database entities and version
 @Database(entities = {
@@ -33,6 +34,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract FoodDao foodDao();
     public abstract HealthDataDao healthDataDao(); // New DAO
     public abstract WorkoutDao workoutDao();
+
+    public abstract CarbonFootprintDao carbonFootprintDao();
 
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {
