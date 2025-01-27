@@ -39,7 +39,8 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.room.common)
     implementation(libs.room.runtime)
-    implementation(libs.google.generativeai)
+    implementation(libs.generativeai)
+//    implementation(libs.generativeai)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -47,5 +48,8 @@ dependencies {
     implementation (libs.room.rxjava2)
     implementation (libs.lifecycle.viewmodel)
     implementation (libs.androidx.lifecycle.livedata)
-    implementation(libs.google.generativeai)
+    implementation("com.google.ai.client.generativeai:generativeai:0.2.1")
+//    implementation ("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
 }

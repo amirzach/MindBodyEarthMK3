@@ -28,7 +28,7 @@ public class TipsChatAdapter extends ListAdapter<TipsChatMessage, TipsChatAdapte
 
                 @Override
                 public boolean areContentsTheSame(@NonNull TipsChatMessage oldItem, @NonNull TipsChatMessage newItem) {
-                    return oldItem.getText().equals(newItem.getText()) &&
+                    return oldItem.getTextMessage().equals(newItem.getTextMessage()) &&
                             oldItem.isUserMessage() == newItem.isUserMessage();
                 }
             };
@@ -56,7 +56,7 @@ public class TipsChatAdapter extends ListAdapter<TipsChatMessage, TipsChatAdapte
         }
 
         public void bind(TipsChatMessage message) {
-            messageTextView.setText(message.getText());
+            messageTextView.setText(message.getTextMessage());
             // You can style user and AI messages differently here
         }
     }

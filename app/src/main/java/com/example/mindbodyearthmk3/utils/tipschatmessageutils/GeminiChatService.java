@@ -1,42 +1,51 @@
 package com.example.mindbodyearthmk3.utils.tipschatmessageutils;
 
-import android.os.Looper;
-
 import com.google.ai.client.generativeai.GenerativeModel;
-import com.google.ai.client.generativeai.java.GenerativeModelResponse;
+import com.google.ai.client.generativeai.type.ContentKt;
+import com.google.ai.client.generativeai.type.Content;
 
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Handler;
 
 public class GeminiChatService implements TipsChatService {
-    private static final String API_KEY = "AIzaSyA3yeKpUwo3sYNm4OYmMQMvZ7uIgdhRXPw";
-    private final GenerativeModel generativeModel;
-    private final Executor executor;
+    private static final String API_KEY = "YOUR_API_KEY";
+    private final GenerativeModel model;
+    private final ExecutorService executor;
 
     public GeminiChatService() {
-        generativeModel = new GenerativeModel.Builder()
-                .setApiKey(API_KEY)
-                .setModel("gemini-pro")
-                .build();
+        model = new GenerativeModel("gemini-pro", API_KEY);
         executor = Executors.newSingleThreadExecutor();
     }
 
     @Override
-    public void getTipsChatResponse(String prompt,TipsChatResponseCallback callback) {
+    public void getTipsChatResponse(String prompt, TipsChatResponseCallback callback) {
         executor.execute(() -> {
             try {
-                GenerativeModelResponse response = generativeModel.generateText(prompt);
-                String aiResponse = response.getText();
+                // Create Content object using the Kotlin extension function
+                Content content = ContentKt.content(null, builder -> {
+                    builder.addText(prompt);
+                    return null;
+                });
 
-                new Handler(Looper.getMainLooper()).post(() ->
-                        callback.onResponse(aiResponse)
-                );
+                // Generate content using the model and handle the response asynchronously
+                model.generateContent(content)
+                        .thenAccept(response -> {
+                            String aiResponse = response.getContent().getText();
+                            callback.onResponse(aiResponse);
+                        })
+                        .exceptionally(e -> {
+                            callback.onError(e.getMessage());
+                            return null;
+                        });
+
             } catch (Exception e) {
-                new Handler(Looper.getMainLooper()).post(() ->
-                        callback.onError("Error: " + e.getMessage())
-                );
+                callback.onError(e.getMessage());
             }
         });
+    }
+
+    // Don't forget to clean up the executor when you're done
+    public void shutdown() {
+        executor.shutdown();
     }
 }
