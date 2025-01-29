@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/carbon_footprint_tracker_bg">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Energy Section Header -->
+        <TextView
+            android:id="@+id/tv_energy_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Energy Consumption"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Electricity Usage Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_electricity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#B38B6D"
+            android:hint="Electricity Usage (kWh)"
+            app:layout_constraintTop_toBottomOf="@id/tv_energy_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/et_electricity_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B38B6D"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Gas Usage Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_gas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gas Usage (m³)"
+            app:layout_constraintTop_toBottomOf="@id/til_electricity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/et_gas_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B38B6D"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Transportation Section Header -->
+        <TextView
+            android:id="@+id/tv_transport_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Transportation"
+            android:background="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/til_gas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Transport Mode Spinner -->
+        <Spinner
+            android:id="@+id/sp_transport_mode"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="#B38B6D"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_transport_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Distance Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_distance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Distance Traveled (km)"
+            app:layout_constraintTop_toBottomOf="@id/sp_transport_mode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/et_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B38B6D"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Fuel Efficiency Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_fuel_efficiency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Fuel Efficiency (%)"
+            app:layout_constraintTop_toBottomOf="@id/til_distance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/et_fuel_efficiency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B38B6D"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Waste Section Header -->
+        <TextView
+            android:id="@+id/tv_waste_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Waste Management"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/til_fuel_efficiency"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Waste Produced Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_waste_produced"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Waste Produced (kg)"
+            app:layout_constraintTop_toBottomOf="@id/tv_waste_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/et_waste_produced"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B38B6D"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Waste Recycled Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_waste_recycled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Waste Recycled (kg)"
+            app:layout_constraintTop_toBottomOf="@id/til_waste_produced"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/et_waste_recycled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B38B6D"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Total Footprint Display -->
+        <TextView
+            android:id="@+id/tv_total_footprint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/til_waste_recycled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Calculate Button -->
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Calculate"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_footprint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_save"/>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Save"
+            android:enabled="false"
+            android:backgroundTint="@color/white"
+            app:layout_constraintTop_toTopOf="@id/btn_calculate"
+            app:layout_constraintStart_toEndOf="@id/btn_calculate"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

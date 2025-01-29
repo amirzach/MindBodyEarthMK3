@@ -11,6 +11,9 @@
       <SelectionState runConfigName="TipsChatbotActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="CarbonFootprintTrackerActivity">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
