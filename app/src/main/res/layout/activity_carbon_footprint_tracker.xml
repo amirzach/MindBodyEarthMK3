@@ -178,19 +178,87 @@
                 android:inputType="numberDecimal"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Total Footprint Display -->
+        <!-- New Footprint Breakdown Section -->
         <TextView
-            android:id="@+id/tv_total_footprint"
+            android:id="@+id/tv_breakdown_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
+            android:text="Carbon Footprint Breakdown"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/til_waste_recycled"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Energy Footprint -->
+        <TextView
+            android:id="@+id/tv_energy_footprint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@color/teal_200"
+            app:layout_constraintTop_toBottomOf="@id/tv_breakdown_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Transport Footprint -->
+        <TextView
+            android:id="@+id/tv_transport_footprint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@color/teal_200"
+            app:layout_constraintTop_toBottomOf="@id/tv_energy_footprint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Waste Footprint -->
+        <TextView
+            android:id="@+id/tv_waste_footprint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@color/teal_200"
+            app:layout_constraintTop_toBottomOf="@id/tv_transport_footprint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Meal Footprint -->
+        <TextView
+            android:id="@+id/tv_meal_footprint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@color/teal_200"
+            app:layout_constraintTop_toBottomOf="@id/tv_waste_footprint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Total Footprint -->
+        <TextView
+            android:id="@+id/tv_total_footprint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_meal_footprint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Calculate and Save buttons remain the same -->
 
         <!-- Calculate Button -->
         <Button

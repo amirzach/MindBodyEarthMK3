@@ -38,6 +38,12 @@ public class CarbonFootprintTrackerActivity extends AppCompatActivity {
     private Button btnCalculate;
     private Button btnSave;
 
+    // New UI Components for detailed footprint display
+    private TextView tvEnergyFootprint;
+    private TextView tvTransportFootprint;
+    private TextView tvWasteFootprint;
+    private TextView tvMealFootprint;
+
     // Database components
     private CarbonFootprintDao carbonFootprintDao;
     private MealPlanDao mealPlanDao;
@@ -76,6 +82,12 @@ public class CarbonFootprintTrackerActivity extends AppCompatActivity {
         tvTotalFootprint = findViewById(R.id.tv_total_footprint);
         btnCalculate = findViewById(R.id.btn_calculate);
         btnSave = findViewById(R.id.btn_save);
+
+        // New view initializations
+        tvEnergyFootprint = findViewById(R.id.tv_energy_footprint);
+        tvTransportFootprint = findViewById(R.id.tv_transport_footprint);
+        tvWasteFootprint = findViewById(R.id.tv_waste_footprint);
+        tvMealFootprint = findViewById(R.id.tv_meal_footprint);
     }
 
     private void setupSpinner() {
@@ -135,7 +147,16 @@ public class CarbonFootprintTrackerActivity extends AppCompatActivity {
 
                     // Update UI on main thread
                     runOnUiThread(() -> {
+                        // Update individual footprint components
+                        tvEnergyFootprint.setText(String.format("Energy Footprint: %.2f kgCO2", energyFootprint));
+                        tvTransportFootprint.setText(String.format("Transport Footprint: %.2f kgCO2", transportFootprint));
+                        tvWasteFootprint.setText(String.format("Waste Footprint: %.2f kgCO2", wasteFootprint));
+                        tvMealFootprint.setText(String.format("Meal Footprint: %.2f kgCO2 (%d calories)",
+                                mealPlanFootprint, totalCalories));
+
+                        // Update total footprint
                         tvTotalFootprint.setText(String.format("Total Carbon Footprint: %.2f kgCO2", totalFootprint));
+
                         btnSave.setEnabled(true);
                     });
                 } catch (Exception e) {
