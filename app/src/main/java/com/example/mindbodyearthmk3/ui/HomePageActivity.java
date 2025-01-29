@@ -33,9 +33,9 @@ public class HomePageActivity extends AppCompatActivity {
         onBubbleClick(WorkoutPlanActivity.class, R.id.bubble_workout_plan);
         onBubbleClick(JournalActivity.class, R.id.bubble_journal);
         onBubbleClick(MealPlanActivity.class, R.id.bubble_meal_plan);
-        onBubbleClick(TipsActivity.class, R.id.bubble_tips);
+        onBubbleClick(TipsChatbotActivity.class, R.id.bubble_tips);
         onBubbleClick(HealthTrackingActivity.class, R.id.bubble_health_tracking);
-        onBubbleClick(CarbonFootprintActivity.class, R.id.bubble_carbon_footprint);
+        onBubbleClick(CarbonFootprintTrackerActivity.class, R.id.bubble_carbon_footprint);
 
     }
 

@@ -1,9 +1,11 @@
 package com.example.mindbodyearthmk3.ui;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
@@ -25,6 +27,8 @@ public class MealPlanActivity extends AppCompatActivity {
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private AppDatabase db;
     private TextView totalCaloriesView;
+    private ListView daysListView;
+    private ArrayAdapter<String> daysAdapter;
     private static final String[] DAYS_OF_WEEK = {
             "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
     };
@@ -35,12 +39,23 @@ public class MealPlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_meal_plan);
 
         totalCaloriesView = findViewById(R.id.tvTotalCalories);
+        daysListView = findViewById(R.id.lvDays);
         db = AppDatabase.getInstance(this);
 
+        setupDaysList();
         loadWeeklyCalories();
+    }
 
-        Button editMealsButton = findViewById(R.id.btnEditMeals);
-        editMealsButton.setOnClickListener(v -> showEditMealsDialog());
+    private void setupDaysList() {
+        daysAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,
+                DAYS_OF_WEEK);
+        daysListView.setAdapter(daysAdapter);
+
+        daysListView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedDay = DAYS_OF_WEEK[position];
+            showMealEditDialog(selectedDay);
+        });
     }
 
     private void loadWeeklyCalories() {
@@ -89,17 +104,17 @@ public class MealPlanActivity extends AppCompatActivity {
         return totalCalories;
     }
 
-    private void showEditMealsDialog() {
-        runOnUiThread(() -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Select Day to Edit Meals");
-            builder.setItems(DAYS_OF_WEEK, (dialog, which) -> {
-                String selectedDay = DAYS_OF_WEEK[which];
-                showMealEditDialog(selectedDay);
-            });
-            builder.show();
-        });
-    }
+//    private void showEditMealsDialog() {
+//        runOnUiThread(() -> {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            builder.setTitle("Select Day to Edit Meals");
+//            builder.setItems(DAYS_OF_WEEK, (dialog, which) -> {
+//                String selectedDay = DAYS_OF_WEEK[which];
+//                showMealEditDialog(selectedDay);
+//            });
+//            builder.show();
+//        });
+//    }
 
     private void showMealEditDialog(String day) {
         executorService.execute(() -> {
@@ -113,10 +128,11 @@ public class MealPlanActivity extends AppCompatActivity {
                 }
 
                 List<Meal> meals = db.mealDao().findByMealPlanId(mealPlan.getMealPlanId());
+                final MealPlan finalMealPlan = mealPlan;
 
                 runOnUiThread(() -> {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setTitle("Edit Meals for " + day);
+                    builder.setTitle("Meals for " + day);
 
                     List<String> mealDescriptions = new ArrayList<>();
                     for (Meal meal : meals) {
@@ -128,12 +144,14 @@ public class MealPlanActivity extends AppCompatActivity {
                         showFoodEditDialog(selectedMeal);
                     });
 
-                    builder.setNegativeButton("Add Meal", (dialog, which) -> showAddMealDialog(day));
+                    builder.setNegativeButton("Add Meal", (dialog, which) ->
+                            showAddMealDialog(finalMealPlan.getDay()));
                     builder.show();
                 });
             } catch (Exception e) {
                 e.printStackTrace();
-                runOnUiThread(() -> Toast.makeText(this, "Error loading meals.", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> Toast.makeText(this,
+                        "Error loading meals.", Toast.LENGTH_SHORT).show());
             }
         });
     }

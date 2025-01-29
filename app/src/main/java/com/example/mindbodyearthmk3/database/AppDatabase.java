@@ -18,9 +18,10 @@ import com.example.mindbodyearthmk3.database.carbonfootprint.CarbonFootprintDao;
         Food.class,
         HealthData.class,
         Workout.class,
-        CarbonFootprint.class
+        CarbonFootprint.class,
+        TipsChatMessage.class
 },
-        version = 8, // Increment version number for the new entity
+        version = 9, // Increment version number for the new entity
         exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -34,6 +35,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract FoodDao foodDao();
     public abstract HealthDataDao healthDataDao(); // New DAO
     public abstract WorkoutDao workoutDao();
+    public abstract TipsChatMessageDao tipsChatMessageDao();
 
     public abstract CarbonFootprintDao carbonFootprintDao();
 
